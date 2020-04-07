@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get '/home', to: 'users#show'
 
-  #resource :user
+  get '/login', to: 'sessions#new'
+
+  post '/sessions', to: 'sessions#login'
+
+  get '/logout', to: 'sessions#logout'
 
 end
