@@ -1,0 +1,42 @@
+<h1> Edit Opportunity </h1>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<%= form_for @opportunity, url: user_opportunity_path do |f| %>
+
+  <p>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  </p>
+  <p>
+  <%= f.label :company %>
+  <%= f.text_field :company %>
+  </p>
+  <p>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  </p>
+  <p>
+  <%= f.label :contact %>
+  <%= f.text_field :contact %>
+  </p>
+  <p>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  </p>
+  <p>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  </p>
+  <p>
+  <%= f.label :job_listing %>
+  <%= f.text_field :job_listing %>
+  </p>
+    <%= f.submit "Save Changes" %>
+<% end %>
+
+<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %>
+<%= f.submit "Delete Opportunity" %>
+<% end %>
