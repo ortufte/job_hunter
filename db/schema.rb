@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_190716) do
+ActiveRecord::Schema.define(version: 2020_04_08_194151) do
+
+  create_table "opportunities", force: :cascade do |t|
+    t.string "title"
+    t.string "company"
+    t.string "location"
+    t.string "contact"
+    t.string "phone"
+    t.string "email"
+    t.string "job_listing"
+    t.boolean "closed", default: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "qualifications", force: :cascade do |t|
     t.string "description"
