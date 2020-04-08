@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<% @qualifications.each do |q| %> 
+    <p><%= q.description %> 
+<% end %> 

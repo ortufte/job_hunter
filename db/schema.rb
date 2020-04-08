@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_155526) do
+ActiveRecord::Schema.define(version: 2020_04_08_190716) do
 
   create_table "qualifications", force: :cascade do |t|
     t.string "description"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,33 +1,26 @@
 class QualificationsController < ApplicationController
 
+    def index
+        @qualifications = Qualification.all 
+    end
+    
     def new
+        @qualification = Qualification.new
     end
 
     def create
-        qualification = Qualification.new(qualification_params)
+        qualification = Qualification.find_or_create_by(:description => params[:qualification][:description])
         if qualification.save
             redirect_to qualifications_path
-        else
-            redirect_to new_qualification_path 
+        else 
+            redirect_to new_qualification_path, :notice => "Oops, something went wrong. Please try again."
         end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-    end
-
-    def destroy
     end
 
     private
 
     def qualification_params
-        params.require(:qualification).permit(:description, :user_id)
+        params.require(:qualification).permit(:description)
     end
 
 end

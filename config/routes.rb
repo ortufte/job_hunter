@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :qualifications
+  resources :qualifications, only: [:index, :new, :create]
+
+  
 
 end
