@@ -1,4 +1,10 @@
 <h1> Welcome to your dashboard <%= @user.name %>! </h1>
 
-
-    
+<% @user.opportunities.each do |o| %>
+    <%= o.title %>
+    <%= o.company %>
+    <%= o.location %>
+    <%= o.contact %>
+    <%= o.phone %>
+    <%= o.job_listing %>
+<% end %>
