@@ -4,11 +4,10 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_tag ("/qualifications") do %>
+<%= form_for @qualification do |f| %>
     <p>
-    <%= label_tag "Description:" %>
-    <%= text_field_tag "description" %>
+    <%= f.label :description, "Description:" %>
+    <%= f.text_field :description %>
     </p>
-
     <%= submit_tag "Create New Qualification" %>
 <% end %>
