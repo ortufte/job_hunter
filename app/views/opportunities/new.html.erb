@@ -4,7 +4,7 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunities_path do |f| %>
+<%= form_for @opportunity, url: user_opportunities_path do |f| %> #POST /users/:user_id/opportunities(.:format) opportunities#create
   <p>
   <%= f.label :title %>
   <%= f.text_field :title %>

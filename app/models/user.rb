@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :opportunities
+    has_many :user_qualifications
+    has_many :qualifications, through: :user_qualifications
 
     validates :name, :email, :password, presence: true
     validates :password, confirmation: true

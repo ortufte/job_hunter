@@ -4,7 +4,7 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunity_path do |f| %>
+<%= form_for @opportunity, url: user_opportunity_path do |f| %> #PATCH /users/:user_id/opportunities/:id opportunities#update
 
   <p>
   <%= f.label :title %>
@@ -37,6 +37,6 @@
     <%= f.submit "Save Changes" %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %>
+<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> #DELETE /users/:user_id/opportunities/:id opportunities#update
 <%= f.submit "Delete Opportunity" %>
 <% end %>
