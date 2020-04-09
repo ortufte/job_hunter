@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :qualifications, only: [:index, :new, :create]
 
+  resources :user_qualifications, only: [:index, :new, :create, :update, :destroy]
+
 end
