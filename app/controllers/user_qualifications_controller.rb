@@ -3,8 +3,6 @@ class UserQualificationsController < ApplicationController
     def index
         #a user "profile" page where they can see and edit their qualifications
         #can i use a partial on this page to edit user_qualifications
-        @user_qualifications = current_user.user_qualifications
-        @qualifications = current_user.qualifications
     end
     
     def new
@@ -15,9 +13,9 @@ class UserQualificationsController < ApplicationController
         #upon selection of a qualification, or creation of a new qualification, add it to user qualifications
         user_qualification = UserQualification.new(user_qualification_params)
         if user_qualification.save
-            redirect_to user_qualifications_path #user_qualifications#index
+            redirect_to user_user_qualifications_path #user_qualifications#index
         else
-            redirect_to new_user_qualification_path, :notice => "Oops, something went wrong. Please try again."
+            redirect_to new_user_user_qualification_path, :notice => "Oops, something went wrong. Please try again."
         end
     end
 
@@ -29,16 +27,16 @@ class UserQualificationsController < ApplicationController
     def update
         @user_qualification = UserQualification.find_by(:id => params[:id])
         if @user_qualification.update(user_qualification_params)
-            redirect_to user_qualifications_path
+            redirect_to user_user_qualifications_path
         else
-            redirect_to edit_user_qualification_path, :notice => "Oops, something went wrong. Please try again."
+            redirect_to edit_user_user_qualification_path, :notice => "Oops, something went wrong. Please try again."
         end
     end
 
     def destroy
         @user_qualification = UserQualification.find_by(:id => params[:id])
         @user_qualification.delete
-        redirect_to user_qualifications_path
+        redirect_to user_user_qualifications_path
     end
 
 

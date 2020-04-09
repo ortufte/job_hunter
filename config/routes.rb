@@ -4,12 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show] do
     resources :opportunities, only: [:new, :create, :edit, :update, :destroy]
+    resources :user_qualifications, only: [:index, :new, :edit, :create, :update, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :qualifications, only: [:index, :new, :create]
-
-  resources :user_qualifications, only: [:index, :new, :create, :update, :destroy]
 
 end
