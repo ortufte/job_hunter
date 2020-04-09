@@ -1,0 +1,12 @@
+<h1><%= current_user.name %>'s Qualifications</h1>
+
+<ul>
+<% current_user.user_qualifications.each do |u| %>
+    <li><%= u.qualification.description%> Note: <%= u.comment %>
+    <%= link_to("Edit", "/users/#{current_user.id}/user_qualifications/#{u.id}/edit") %>
+    <%= link_to("Delete", "/users/#{current_user.id}/user_qualifications/#{u.id}", method: :delete) %>
+<% end %>
+</ul>
+
+
+<%= link_to "Add Qualification", new_user_user_qualification_path %>
