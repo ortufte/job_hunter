@@ -1,12 +1,19 @@
-<h1><%= current_user.name %>'s Qualifications</h1>
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<h1><%= current_user.name %>'s Profile </h1>
 
 <ul>
 <% current_user.user_qualifications.each do |u| %>
-    <li><%= u.qualification.description%> Note: <%= u.comment %>
-    <%= link_to("Edit", "/users/#{current_user.id}/user_qualifications/#{u.id}/edit") %>
-    <%= link_to("Delete", "/users/#{current_user.id}/user_qualifications/#{u.id}", method: :delete) %>
+    <li><%= u.qualification.description%>
+    <%= link_to("Add/Edit Notes", "/users/#{current_user.id}/user_qualifications/#{u.id}/edit") %></li>
+    <% if !u.comment.blank? %>
+    <p>Notes: <%= u.comment %></p>
+    <% end %>
+    <br>
 <% end %>
 </ul>
 
 
-<%= link_to "Add Qualification", new_user_user_qualification_path %>
+<%= link_to "Add or Remove Qualifications", edit_user_path(current_user) %>

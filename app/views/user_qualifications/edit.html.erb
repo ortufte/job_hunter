@@ -1,10 +1,10 @@
-<h1> Edit Qualification </h1>
+# A user can add comments to the user_qualification instances on this page
+
+<h1> Qualification: <%= @user_qualification.qualification.description %> </h1>
 
 <%= form_for @user_qualification, url: user_user_qualification_path, html: { :method => :patch } do |f| %> 
-    <%= f.label :comment %>
-    <%= f.text_field :comment %>
+    <%= f.label :comment, "Notes:"%>
+    <%= f.text_area :comment %>
     </p>
-    <%= f.submit "Edit Qualification" %>
+    <%= f.submit "Update" %>
 <% end %>
-
-# I want this to show up on the user_qualifications index page when I click edit 
