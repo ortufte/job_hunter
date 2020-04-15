@@ -4,7 +4,7 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunity_path do |f| %> #PATCH /users/:user_id/opportunities/:id opportunities#update
+<%= form_for @opportunity, url: user_opportunity_path do |f| %> 
 
   <p>
   <%= f.label :title %>
@@ -34,9 +34,12 @@
   <%= f.label :job_listing %>
   <%= f.text_field :job_listing %>
   </p>
+  <p>
+  <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+  </p>
     <%= f.submit "Save Changes" %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> #DELETE /users/:user_id/opportunities/:id opportunities#update
+<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> 
 <%= f.submit "Delete Opportunity" %>
 <% end %>

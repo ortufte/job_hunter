@@ -4,7 +4,7 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_for @opportunity, url: user_opportunities_path do |f| %> #POST /users/:user_id/opportunities(.:format) opportunities#create
+<%= form_for @opportunity, url: user_opportunities_path do |f| %> 
   <p>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -33,5 +33,10 @@
   <%= f.label :job_listing %>
   <%= f.text_field :job_listing %>
   </p>
+  <p>
+  <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+  </p>
+
+
     <%= f.submit "Create" %>
 <% end %>
