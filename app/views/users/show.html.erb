@@ -1,12 +1,12 @@
-<h1> Welcome to your dashboard <%= @user.name %>! </h1>
+<h1> Welcome to your dashboard <%= current_user.name %>! </h1>
 
-<% @user.opportunities.each do |o| %>
-    <%= o.title %>
-    <%= o.company %>
-    <%= o.location %>
-    <%= o.contact %>
-    <%= o.phone %>
-    <%= o.job_listing %>
+<h3> Current Job Opportunities </h3>
+<% current_user.opportunities.each do |o| %>
+    <p><%= link_to(o.title, "/users/#{current_user.id}/opportunities/#{o.id}}") %></p>
+    <p>Company:<%= o.company %></p>
+
 <% end %>
 
-<a href="/users/:user_id/user_qualifications"> Go to Profile </a>
+<%= link_to "Add a Job Opportunity", "/users/#{current_user.id}/opportunities/new" %>
+<%= link_to "Go to Profile", "/users/#{current_user.id}/user_qualifications" %>
+<%= link_to("Logout", session_path, method: :delete) %>
