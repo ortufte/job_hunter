@@ -7,11 +7,16 @@ class OpportunitiesController < ApplicationController
     def create
         @opportunity = current_user.opportunities.build(opportunity_params)
         if @opportunity.save
-            redirect_to user_path(current_user)
+            redirect_to "/users/#{current_user.id}/opportunities/#{@opportunity.id}"
         else
             redirect_to new_user_opportunity_path, :notice => "Oops, something went wrong. Please try again."
         end
     end
+
+    def show
+        @opportunity = Opportunity.find_by(:id => params[:id])
+    end
+
 
     def edit
         @opportunity = Opportunity.find_by(:id => params[:id])
@@ -20,7 +25,7 @@ class OpportunitiesController < ApplicationController
     def update
         @opportunity = Opportunity.find_by(:id => params[:id])
         if @opportunity.update(opportunity_params)
-            redirect_to user_path(current_user)
+            redirect_to user_opportunity_path(@opportunity)
         else
             render :edit, :notice => "Oops, something went wrong. Please try again."
         end
@@ -35,7 +40,7 @@ class OpportunitiesController < ApplicationController
     private
 
     def opportunity_params
-        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id)
+        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id, :qualification_ids => [ ])
     end
 
 
