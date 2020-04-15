@@ -1,0 +1,11 @@
+<h1> Add or Remove Qualifications to your Profile </h1>
+
+<%= form_for @user do |f| %> 
+
+    <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+    
+<%= f.submit %>
+
+<% end %>
+    
+

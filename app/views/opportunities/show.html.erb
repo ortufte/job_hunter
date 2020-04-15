@@ -1,0 +1,20 @@
+
+
+<p><%= @opportunity.title %></p>
+<p>Company:<%= @opportunity.company %></p>
+<p>Location: <%= @opportunity.location %></p>
+<p>Contact Name: <%= @opportunity.contact %></p>
+<p>Phone Number: <%= @opportunity.phone %></p>
+<p>Link to Job Listing: <%= @opportunity.job_listing %></p>
+<p>Desired Qualifications: </p>
+<% @opportunity.qualifications.each do |q| %>
+    <ul>
+    <li><%= q.description %></li>
+    </ul>
+    <% end %>
+
+
+
+<%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %>
+<%= link_to("Delete", "/users/#{current_user.id}/opportunities/#{@opportunity.id}", method: :delete) %>
+<%= link_to("Home", user_path(current_user)) %>
