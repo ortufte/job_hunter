@@ -1,26 +1,30 @@
 class UserQualificationsController < ApplicationController
 
     def index
-        #a user "profile" page where they can see and edit their qualifications
-        #can i use a partial on this page to edit user_qualifications
+       
     end
-    
+
     def new
-        @user_qualification = UserQualification.new
+        @user = current_user
+        #byebug
+        3.times do
+            u = @user.user_qualifications.build
+            u.build_qualification
+        end
     end
 
     def create
-        #upon selection of a qualification, or creation of a new qualification, add it to user qualifications
-        user_qualification = UserQualification.new(user_qualification_params)
-        if user_qualification.save
-            redirect_to user_user_qualifications_path #user_qualifications#index
+        #byebug
+        @user_qualification = UserQualification.new(user_qualification_params)
+        byebug
+        if @user_qualification.save
+            redirect_to user_user_qualifications_path
         else
             redirect_to new_user_user_qualification_path, :notice => "Oops, something went wrong. Please try again."
         end
     end
 
     def edit
-        #a user can update a user qualification by adding a comment to the qualification on their profile page
         @user_qualification = UserQualification.find_by(:id => params[:id])
     end
 
@@ -43,7 +47,7 @@ class UserQualificationsController < ApplicationController
     private
 
     def user_qualification_params
-        params.require(:user_qualification).permit(:comment, :user_id, :qualification_id)
+        params.require(:user_qualification).permit(:user_id, :qualification_id, :comment)
     end
 
 end
