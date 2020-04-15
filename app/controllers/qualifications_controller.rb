@@ -20,7 +20,7 @@ class QualificationsController < ApplicationController
     private
 
     def qualification_params
-        params.require(:qualification).permit(:description)
+        params.require(:qualification).permit(:description, :user_ids => [ ])
     end
 
 end
