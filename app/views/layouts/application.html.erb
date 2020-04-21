@@ -10,6 +10,25 @@
   </head>
 
   <body>
+
+
+    <nav>
+
+      <section>
+        <%#= link_to_unless_current "Test", new_user_path %>
+      </section>
+
+      <section class="utility">
+        <% if logged_in? %>
+          You are logged in as <%= current_user.email %><br>
+          <%= link_to_unless_current "Home", user_path(current_user) %>
+          <%= link_to_unless_current "Profile", user_user_qualifications_path(current_user) %>
+          <%= link_to("Logout", session_path(current_user), method: :delete) %>
+        <% end %>
+      </section>
+
+    </nav>
+
     <%= yield %>
   </body>
 </html>
