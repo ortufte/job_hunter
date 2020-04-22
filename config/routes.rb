@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'application#index'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
-    resources :opportunities, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :opportunities, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :user_qualifications, only: [:index, :edit, :update, :destroy]
   end
 
