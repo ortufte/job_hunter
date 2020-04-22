@@ -1,7 +1,11 @@
 class OpportunitiesController < ApplicationController
 
+    def index
+        @opportunities = Opportunity.all
+    end
+
     def new
-        @opportunity = Opportunity.new
+        @opportunity = Opportunity.new #current_user.opportunities.build NO PARAMS
     end
 
     def create

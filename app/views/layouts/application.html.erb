@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>JobHunter</title>
     <%= csrf_meta_tags %>
@@ -11,24 +11,48 @@
 
   <body>
 
+    <% if logged_in? %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Job Hunter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <nav>
 
-      <section>
-        <%#= link_to_unless_current "Test", new_user_path %>
-      </section>
-
-      <section class="utility">
-        <% if logged_in? %>
-          You are logged in as <%= current_user.email %><br>
-          <%= link_to_unless_current "Home", user_path(current_user) %>
-          <%= link_to_unless_current "Profile", user_user_qualifications_path(current_user) %>
-          <%= link_to("Logout", session_path(current_user), method: :delete) %>
-        <% end %>
-      </section>
-
+  <div class="collapse navbar-collapse" id="navbarColor01">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/users/<%= current_user.id %>" >Home <span class="sr-only" >(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users/<%= current_user.id %>/user_qualifications" >Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users/<%= current_user.id %>/opportunities" >Opportunities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-method=delete href="/sessions/<%= current_user.id %>">Logout</a>
+    </li>
+  </ul>
+        <span class="navbar-text">
+          You are logged in as <%= current_user.email %>
+        </span>
+      </div>
     </nav>
+    <% end %>
 
     <%= yield %>
+
   </body>
+
+  
+    <footer class="page-footer font-small black fixed-bottom">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+          <a href="#"> JobHunter.com</a>
+        </div>
+        <!-- Copyright -->
+        </footer>
+
 </html>
+
