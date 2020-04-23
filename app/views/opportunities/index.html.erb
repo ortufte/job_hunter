@@ -1,1 +1,36 @@
-Hello
+<br>
+<br>
+<br>
+<h3 style="text-indent: 15px">Current Opportunities</h3>
+<div class="list-group">
+<% current_user.opportunities.each do |o| %>
+    <% if !o.closed %>
+  <a href="/users/<%= current_user.id %>/opportunities/<%= o.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= o.title %></h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Company: <%= o.company %></p>
+    <small class="text-muted">Possibly List Tasks Here</small>
+  </a>
+  <% end %>
+  <% end %>
+</div>
+<br>
+<p style="text-indent: 15px"><%= link_to "Add a Job Opportunity", "/users/#{current_user.id}/opportunities/new" %><p>
+<br>
+<h3 style="text-indent: 15px">Closed Opportunities</h3>
+<div class="list-group">
+<% current_user.opportunities.each do |o| %>
+    <% if o.closed %>
+  <a href="/users/<%= current_user.id %>/opportunities/<%= o.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= o.title %></h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Company: <%= o.company %></p>
+    <small class="text-muted">Possibly List Tasks Here</small>
+  </a>
+  <% end %>
+  <% end %>
+</div>
