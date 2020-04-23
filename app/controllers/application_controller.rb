@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
     
     def index
+        @user = User.new
     end
 
     def current_user

@@ -4,7 +4,7 @@
 <br>
 <br>
 <br>
-<h3 style="text-indent: 15px"><%= current_user.name %>'s Profile </h3>
+<h3 style="text-indent: 15px"><%= current_user.name %>'s Qualifications </h3>
 <div class="list-group">
     <% current_user.user_qualifications.each do |u| %>
         <a href="/users/<%= current_user.id %>/user_qualifications/<%= u.id %>/edit" class="list-group-item list-group-item-action flex-column align-items-start">

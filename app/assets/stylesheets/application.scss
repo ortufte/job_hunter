@@ -15,6 +15,17 @@
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 
+ .index_page {
+    background-image: image-url("binoculars-3683757_1920.jpg");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+  }
+
+  h1 {
+      color: white
+  }
+
+
 @import 'variables';
 @import 'bootstrap';
 @import 'bootswatch';

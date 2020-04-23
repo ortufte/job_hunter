@@ -1,7 +1,54 @@
-<div class="container text-center"
 
-    <h1> JOB HUNTER </h1>
+<br>
+<br>
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
 
-    <h3><a href= "/users/new" >Sign Up</a> or <a href= "/sessions/new" >Log In</a></h3>
-    
+<body class="index_page">
+
+<div class="card border-light mb-3" style="max-width: 20rem;">
+    <div class="card-body" >
+    <h4 class="card-title">Login</h4>
+
+    <%= form_tag ("/sessions") do %>
+        <%= label_tag "Email:" %><br>
+        <%= text_field_tag "email" %><br>
+
+        <%= label_tag "Password:" %><br>
+        <%= password_field_tag "password" %><br>
+        <br>
+        <%= submit_tag "Login" %>
+    <% end %>
+    </div>
 </div>
+<br>
+<br>
+<div class="card border-light mb-3" style="max-width: 20rem;">
+    <div class="card-body" >
+    <h4 class="card-title">Sign Up</h4>
+
+    <%= form_for @user do |f| %>
+        <%= f.label :name, 'Name:' %><br>
+        <%= f.text_field :name %><br>
+
+        <%= f.label :email,'Email:' %><br>
+        <%= f.text_field :email %><br>
+
+        <%= f.label :password, 'Password:' %><br>
+        <%= f.text_field :password %><br>
+
+        <%= f.label :password_confirmation, 'Confirm Password:' %><br>
+        <%= f.text_field :password_confirmation %><br>
+        <br>
+        <%= f.submit "Sign Up" %>
+    <% end %>
+
+    </div>
+</div>
+</body>
+
+  
+
+
+
