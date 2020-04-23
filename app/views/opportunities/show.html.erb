@@ -1,20 +1,26 @@
 
-<div>
-<p><%= @opportunity.title %></p>
-<p>Company:<%= @opportunity.company %></p>
-<p>Location: <%= @opportunity.location %></p>
-<p>Contact Name: <%= @opportunity.contact %></p>
-<p>Phone Number: <%= @opportunity.phone %></p>
-<p>Link to Job Listing: <%= @opportunity.job_listing %></p>
-<p>Desired Qualifications: </p>
-<% @opportunity.qualifications.each do |q| %>
-    <ul>
-    <li><%= q.description %></li>
-    </ul>
-<% end %>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title"><%= @opportunity.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted">Company:<%= @opportunity.company %></h6>
+    <p class="card-text">Location: <%= @opportunity.location %></p>
+    <p class="card-text">Contact Name: <%= @opportunity.contact %></p>
+    <p class="card-text">Phone Number: <%= @opportunity.phone %></p>
+    <p class="card-text">Link to Job Listing: <%= @opportunity.job_listing %></p>
+    <p class="card-text">Desired Qualifications:</p>
+    <% @opportunity.qualifications.each do |q| %>
+        <ul>
+        <li><p class="card-text"><%= q.description %></p></li>
+        </ul>
+    <% end %>
+    <br>
+    <br>
+
+
+    <%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %><br>
+    <%= link_to("Delete", "/users/#{current_user.id}/opportunities/#{@opportunity.id}", method: :delete) %>
+  </div>
 </div>
 
 
 
-<%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %>
-<%= link_to("Delete", "/users/#{current_user.id}/opportunities/#{@opportunity.id}", method: :delete) %>
