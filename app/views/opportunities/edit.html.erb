@@ -4,7 +4,7 @@
 <div class="card bg-secondary mb-3">
  
   <div class="card-body">
-<%= form_for @opportunity, url: user_opportunity_path do |f| %>
+  <%= form_for @opportunity, url: user_opportunity_path do |f| %>
   <fieldset>
     <legend>Edit Opportunity </legend>
     
@@ -51,7 +51,6 @@
     </div>
   </fieldset>
   <%= f.submit "Save Changes" %>
-
 <% end %>
 <br>
 <%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> 

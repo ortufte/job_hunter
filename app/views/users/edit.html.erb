@@ -1,11 +1,15 @@
-<h1> Add or Remove Qualifications to your Profile </h1>
+<div class="card bg-secondary mb-3">
+ 
+    <div class="card-body">
+    <%= form_for @user do |f| %> 
+    <fieldset>
+     <legend>Add or Remove Qualifications to your Profile</legend>
+    <fieldset class="form-group">
 
-<%= form_for @user do |f| %> 
+    <div class="form-check">
+        <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+    </div>
+    </fieldset>
 
-    <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
-    
-<%= f.submit %>
-
+    <%= f.submit "Create" %>
 <% end %>
-    
-
