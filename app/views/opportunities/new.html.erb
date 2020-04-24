@@ -1,42 +1,50 @@
-<h1> Create a New Opportunity </h1>
-
 <% if flash[:notice] %>
 <%= flash[:notice] %>
 <% end %>
+<div class="card bg-secondary mb-3">
+ 
+  <div class="card-body">
+  <%= form_for @opportunity, url: user_opportunities_path do |f| %> 
+  <fieldset>
+    <legend>Create Opportunity </legend>
+    
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :company %><br>
+      <%= f.text_field :company %>
+    </div>
+    <div class="form-group">
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </div>
+    <div class="form-group">
+      <%= f.label :contact %><br>
+      <%= f.text_field :contact %>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone %><br>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="form-group">
+      <%= f.label :job_listing %><br>
+      <%= f.text_field :job_listing %>
+    </div>
 
-<%= form_for @opportunity, url: user_opportunities_path do |f| %> 
-  <p>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  </p>
-  <p>
-  <%= f.label :company %>
-  <%= f.text_field :company %>
-  </p>
-  <p>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  </p>
-  <p>
-  <%= f.label :contact %>
-  <%= f.text_field :contact %>
-  </p>
-  <p>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  </p>
-  <p>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  </p>
-  <p>
-  <%= f.label :job_listing %>
-  <%= f.text_field :job_listing %>
-  </p>
-  <p>
-  <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
-  </p>
+  </fieldset>
 
+  <fieldset class="form-group">
+    <legend>Qualifications</legend>
+    <div class="form-check">
+      <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+    </div>
+  </fieldset>
 
-    <%= f.submit "Create" %>
-<% end %>
+  <%= f.submit "Create" %>
+  <% end %>
