@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :user_qualifications, only: [:index, :edit, :update, :destroy]
   end
 
+  resources :qualifications, only: [:new, :create]
   resources :sessions, only: [:create, :destroy]
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+ 
   
 end

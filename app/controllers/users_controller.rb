@@ -24,7 +24,8 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by(:id => params[:id])
-        if @user.update(:qualification_ids => user_params[:qualification_ids])
+        #byebug
+        if @user.update(user_params)
             redirect_to user_user_qualifications_path(current_user)
         else
             redirect_to user_user_qualifications_path(current_user), :notice => "Oops, something went wrong. Please try again."
@@ -33,9 +34,8 @@ class UsersController < ApplicationController
 
 
     private
-
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :qualification_ids => [ ], :qualification_attributes => [:description])
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :qualification_ids => [ ], :qualifications_attributes => [:description])
     end
 
 end
