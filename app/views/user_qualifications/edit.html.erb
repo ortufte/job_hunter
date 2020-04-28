@@ -1,9 +1,13 @@
-
-<h1> Qualification: <%= @user_qualification.qualification.description %> </h1>
-
-<%= form_for @user_qualification, url: user_user_qualification_path, html: { :method => :patch } do |f| %> 
-    <%= f.label :comment, "Notes:"%>
-    <%= f.text_area :comment %>
-    </p>
-    <%= f.submit "Update" %>
-<% end %>
+<div class="card bg-secondary mb-3">
+    <div class="card-body">
+        <%= form_for @user_qualification, url: user_user_qualification_path, html: { :method => :patch } do |f| %> 
+            <fieldset>
+            <legend>Qualification: <%= @user_qualification.qualification.description %></legend>
+            <fieldset class="form-group">
+                <%= f.label :comment, "Notes:"%>
+                <%= f.text_area :comment %><br>
+                <%= f.submit "Update" %>
+            </fieldset>
+        <% end %>
+    </div>
+</div>
