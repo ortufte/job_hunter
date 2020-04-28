@@ -41,7 +41,6 @@
     <%= f.label :closed %>
     <%= f.check_box :closed %>
   </div>
-
   </fieldset>
 
   <fieldset class="form-group">
@@ -50,6 +49,16 @@
       <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
     </div>
   </fieldset>
+
+  <fieldset>
+  <legend>Create a New Qualification</legend>
+  <div class="form-group">
+      <%= f.fields_for :qualifications, @opportunity.qualifications.build do |qualifications_fields| %>
+          <%= qualifications_fields.text_field :description %>
+        <% end %>
+  </div>
+  </fieldset>
+
   <%= f.submit "Save Changes" %>
 <% end %>
 <br>

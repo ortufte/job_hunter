@@ -1,49 +1,64 @@
 <% if flash[:notice] %>
 <%= flash[:notice] %>
 <% end %>
+
 <div class="card bg-secondary mb-3">
  
   <div class="card-body">
-  <%= form_for @opportunity, url: user_opportunities_path do |f| %> 
-  <fieldset>
-    <legend>Create Opportunity </legend>
+    <%= form_for @opportunity, url: user_opportunities_path do |f| %> 
+
+      <fieldset>
+        <legend>Create Opportunity </legend>
+        <div class="form-group">
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+          <%= f.label :company %><br>
+          <%= f.text_field :company %>
+        </div>
+        <div class="form-group">
+          <%= f.label :location %><br>
+          <%= f.text_field :location %>
+        </div>
+        <div class="form-group">
+          <%= f.label :contact %><br>
+          <%= f.text_field :contact %>
+        </div>
+        <div class="form-group">
+          <%= f.label :phone %><br>
+          <%= f.text_field :phone %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %><br>
+          <%= f.text_field :email %>
+        </div>
+        <div class="form-group">
+          <%= f.label :job_listing %><br>
+          <%= f.text_field :job_listing %>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend>Qualifications</legend>
+        <div class="form-check">
+          <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Create a New Qualification</legend>
+        <div class="form-group">
+          <%= f.fields_for :qualifications, @opportunity.qualifications.build do |qualifications_fields| %>
+            <%= qualifications_fields.text_field :description %>
+          <% end %>
+        </div>
+      </fieldset>
+
+      <%= f.submit "Create" %>
     
-    <div class="form-group">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="form-group">
-      <%= f.label :company %><br>
-      <%= f.text_field :company %>
-    </div>
-    <div class="form-group">
-      <%= f.label :location %><br>
-      <%= f.text_field :location %>
-    </div>
-    <div class="form-group">
-      <%= f.label :contact %><br>
-      <%= f.text_field :contact %>
-    </div>
-    <div class="form-group">
-      <%= f.label :phone %><br>
-      <%= f.text_field :phone %>
-    </div>
-    <div class="form-group">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </div>
-    <div class="form-group">
-      <%= f.label :job_listing %><br>
-      <%= f.text_field :job_listing %>
-    </div>
-  </fieldset>
+    <% end %>
+  
+  </div>
 
-  <fieldset class="form-group">
-    <legend>Qualifications</legend>
-    <div class="form-check">
-      <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
-    </div>
-  </fieldset>
-
-  <%= f.submit "Create" %>
-  <% end %>
+</div>

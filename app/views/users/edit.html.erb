@@ -2,14 +2,27 @@
  
     <div class="card-body">
     <%= form_for @user do |f| %> 
-    <fieldset>
-     <legend>Add or Remove Qualifications to your Profile</legend>
-    <fieldset class="form-group">
 
-    <div class="form-check">
-        <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
-    </div>
-    </fieldset>
+        <fieldset>
+            <legend>Add or Remove Qualifications for your Profile</legend>
+        </fieldset>
 
-    <%= f.submit "Create" %>
-<% end %>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Create a New Qualification</legend>
+            <div class="form-group">
+                <%= f.fields_for :qualifications, @user.qualifications.build do |qualifications_fields| %>
+                    <%= qualifications_fields.text_field :description %>
+                <% end %>
+            </div>
+        </fieldset>
+
+        <%= f.submit "Update" %>
+        
+    <% end %>
+    
