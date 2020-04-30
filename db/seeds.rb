@@ -5,7 +5,7 @@ Opportunity.destroy_all
 Qualification.destroy_all
 Task.destroy_all
 
-=begin
+
 
 20.times do 
     Qualification.create([{
@@ -13,13 +13,17 @@ Task.destroy_all
 }])
 end
 
-2.times do
+1.times do
     User.create([{
         name: Faker::Name.unique.name, 
         email: Faker::Internet.email, 
         password: '123456',
         password_confirmation: '123456',
-        qualification_ids: [Faker::Number.between(from: 1, to: 18)]
+        qualification_ids: [Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18)]
 }])
 end
 
@@ -33,23 +37,40 @@ end
         phone: Faker::PhoneNumber.phone_number, 
         email: Faker::Internet.email, 
         job_listing: Faker::Internet.url, 
-        closed: Faker::Boolean.boolean(true_ratio: 0.2), 
-        user_id: Faker::Number.between(from: 1, to: 4),
-        qualification_ids: [Faker::Number.within(range: 1..19),
-                            Faker::Number.within(range: 1..19),
-                            Faker::Number.within(range: 1..19)],
+        closed: Faker::Boolean.boolean(true_ratio: 0.4), 
+        user_id: User.first.id,
+        created_at: Faker::Time.backward(days: 30),
+        qualification_ids: [Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18),
+                            Faker::Number.between(from: 1, to: 18)],
+        tasks_attributes: [{
+                            description: Faker::Verb.base,
+                            priority: Faker::Number.between(from: 1, to: 5),
+                            complete: Faker::Boolean.boolean(true_ratio: 0.3),
+                            created_at: Faker::Time.backward(days: 30)
+                            },
+                            {
+                            description: Faker::Verb.base,
+                            priority: Faker::Number.between(from: 1, to: 5),
+                            complete: Faker::Boolean.boolean(true_ratio: 0.3),
+                            created_at:Faker::Time.backward(days: 30)
+                            },
+                            {
+                            description: Faker::Verb.base,
+                            priority: Faker::Number.between(from: 1, to: 5),
+                            complete: Faker::Boolean.boolean(true_ratio: 0.3),
+                            created_at: Faker::Time.backward(days: 30)
+                            },
+                            {
+                            description: Faker::Verb.base,
+                            priority: Faker::Number.between(from: 1, to: 5),
+                            complete: Faker::Boolean.boolean(true_ratio: 0.3),
+                            created_at: Faker::Time.backward(days: 30)
+                            }]
 }])    
 end
 
-=end
-
-#20.times do 
-    Task.create([{
-        description: "description",
-        #priority: Faker::Number.between(from: 1, to: 5),
-        #complete: 'false',
-        #opportunity_id: Faker::Number.between(from: 1, to: 10)
-   }])
-#end
 
 
