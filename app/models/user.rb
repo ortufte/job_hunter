@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :opportunities
+    has_many :tasks, through: :opportunities
     has_many :user_qualifications
     has_many :qualifications, through: :user_qualifications
 
@@ -18,8 +19,6 @@ class User < ApplicationRecord
         end
     end
 
-
-
     def self.find_or_create_from_auth_hash(auth)
 		where(email: auth.extra.id_info.email).first_or_initialize.tap do |user|
 			user.name = auth.extra.id_info.name
@@ -28,7 +27,12 @@ class User < ApplicationRecord
             user.password_confirmation = user.password
 			user.save!
 		end
-	end
+    end
+    
+   
+
+
+
 
 end
 
