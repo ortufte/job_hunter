@@ -6,122 +6,143 @@
 
 <br>
 <br>
-<div class="container" width="100">
-  <%= form_for @opportunity, url: user_opportunity_path do |f| %>
-    
-    <div class="row">
-      <div class="col-sm-4">
-     
-        <fieldset>
-          <legend>Edit Opportunity </legend>
-          <div class="form-group">
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-          </div>
-          <div class="form-group">
-            <%= f.label :company %>
-            <%= f.text_field :company %>
-          </div>
-          <div class="form-group">
-            <%= f.label :location %>
-            <%= f.text_field :location %>
-          </div>
-          <div class="form-group">
-            <%= f.label :contact %>
-            <%= f.text_field :contact %>
-          </div>
-          <div class="form-group">
-            <%= f.label :phone %>
-            <%= f.text_field :phone %>
-          </div>
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.text_field :email %>
-          </div>
-          <div class="form-group">
-            <%= f.label :job_listing %>
-            <%= f.text_field :job_listing %>
-          </div>
-          <div class="form-check">
-          <label class="form-check-label">
-            <%= f.label :closed %>
-            <%= f.check_box :closed %>
-          </div>
-        </fieldset>
-      </div>
-  
-      <div class="col-sm-4">
+<header class="col-xs-1" align="center">
+  <h3> <%= @opportunity.title %> </h3>
+  <h6 class="text-muted">Company:<%= @opportunity.company %></h6>
+</header>
+<br>
+<br>
 
-        <fieldset>
-          <legend>Qualifications</legend>
-          <div class="form-check">
-            <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
-          </div>
-        </fieldset>
-        <br>
-        <br>
-
-        <div class="card border-primary mb-3" style="max-width: 40rem;">
-        <div class="card-header">Create a New Qualification </div>
-          <div class="card-body">
-            <div class="form-group">
-              <%= f.fields_for :qualifications, @opportunity.qualifications.build do |q| %>
-                <%= q.label :description %>
-                <%= q.text_field :description %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        </div>
-
-      <div class="col-sm-4">
-
-        <fieldset>
-          <legend>Tasks</legend>
-          <%= f.fields_for :tasks, @opportunity.tasks.each do |t| %>
-           
-            <div class="form-group">
-              <%= t.label :description %>
-              <%= t.text_field :description %>
-            </div>
-            <div class="form-group">
-              <%= t.label :priority %>
-              <%= t.text_field :priority %>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-              <%= t.label :complete %>
-              <%= t.check_box :complete %>
-            </div>
-            <br>
-            <br>
-          <% end %>
-        </fieldset>
-
-        <div class="card border-primary mb-3" style="max-width: 40rem;">
-    
-          <fieldset>
-            <div class="card-header">Create a New Task</div>
-              <div class="card-body">
-                <div class="form-group">
-                  <%= f.fields_for :tasks, @opportunity.tasks.build do |t| %>
-                  <%= t.label :description %>
-                  <%= t.text_field :description %><br>
-                  <%= t.label :priority %>
-                  <%= t.text_field :priority %><br>
-                  <% end %>
+<%= form_for @opportunity, url: user_opportunity_path do |f| %>
+  <div class="card bg-secondary mb-3">
+    <div class="card-body">
+      <h4 class="card-title"> Edit Details </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Job Listing</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>   
+              <div class="form-group">
+                <%= f.text_field :location %>
               </div>
-            </div>
-          </fieldset>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :contact %>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :phone %>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :email %>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :job_listing %>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label class="form-check-label">
+                <%= f.label :closed %>
+                <%= f.check_box :closed %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Desired Qualifications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> 
+              <div class="form-check">
+                <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="form-group">
+          <%= f.fields_for :qualifications, @opportunity.qualifications.build do |q| %>
+            <%= q.label :description, "Create a New Qualification: " %>
+            <%= q.text_field :description %>
+          <% end %>
       </div>
     </div>
+  </div>
+  <div class="card bg-secondary mb-3">
+    <div class="card-body">
+      <h4 class="card-title"> Tasks </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :tasks, @opportunity.tasks.each do |t| %>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <%= t.text_field :description %>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <%= t.text_field :priority %>
+                </div>
+              </td>
+              <td>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <%= t.label :complete %>
+                  <%= t.check_box :complete %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-    <%= f.submit "Save Changes" %>
-  <% end %>
-      
-  <%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> 
-    <%= f.submit "Delete Opportunity" %>
-  <% end %>
+      <div class="form-group">
+        <%= f.fields_for :tasks, @opportunity.tasks.build do |t| %>
+          <%= t.label :description, "Create a New Task: "%>
+          <%= t.text_field :description %>
+          <%= t.label :priority, "Priority: "%>
+          <%= t.text_field :priority %><br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Save Changes" %>
+<% end %>
+<br>
+<%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> 
+  <%= f.submit "Delete Opportunity" %>
+<% end %>
 </div>
 <br>
 <br>

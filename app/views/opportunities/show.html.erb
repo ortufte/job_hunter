@@ -1,24 +1,90 @@
-<div class="card">
+<br>
+<br>
+<header class="col-xs-1" align="center">
+  <h3> <%= @opportunity.title %> </h3>
+  <h6 class="text-muted">Company:<%= @opportunity.company %></h6>
+</header>
+<br>
+<div class="card bg-secondary mb-3">
   <div class="card-body">
-    <h4 class="card-title"><%= @opportunity.title %></h4>
-    <h6 class="card-subtitle mb-2 text-muted">Company:<%= @opportunity.company %></h6>
-    <br>
-    <p class="card-text">Location: <%= @opportunity.location %></p>
-    <p class="card-text">Contact Name: <%= @opportunity.contact %></p>
-    <p class="card-text">Phone Number: <%= @opportunity.phone %></p>
-    <p class="card-text">Link to Job Listing: <%= @opportunity.job_listing %></p>
-    <p class="card-text">Desired Qualifications:</p>
-    <% @opportunity.qualifications.each do |q| %>
-        <ul>
-        <li><p class="card-text"><%= q.description %></p></li>
-        </ul>
-    <% end %>
-    <br>
-    <br>
-    <%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %><br>
-    <%= link_to("Delete", "/users/#{current_user.id}/opportunities/#{@opportunity.id}", method: :delete) %>
+    <h4 class="card-title"> Details </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Location</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Job Listing</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @opportunity.location %></td>
+          <td><%= @opportunity.contact %></td>
+          <td><%= @opportunity.phone %></td>
+          <td><%= @opportunity.email %></td>
+          <td><%= @opportunity.job_listing %></td>
+          <td><%= @opportunity.closed? %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Desired Qualifications</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> 
+            <% @opportunity.qualifications.each do |q| %>
+              | <%= q.description %> |
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
+<div class="card bg-secondary mb-3">
+  <div class="card-body">
+    <h4 class="card-title"> Tasks </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Status</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @opportunity.tasks.each do |t| %>
+          <tr>
+            <td><%= t.description %></td>
+            <td><%= t.priority %></td>
+            <td><%= t.complete? %></td>
+            <td><%= button_to "delete", task_path("#{t.id}"), :method => :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table> 
+  </div>
+</div>
+<br>
+<br>
+<div>
+<h4 style="text-indent: 15px"><%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %><br></h4>
+<h4 style="text-indent: 15px"><%= link_to("Delete", "/users/#{current_user.id}/opportunities/#{@opportunity.id}", method: :delete) %></h4>
+</div>
+<br>
+<br>
+
+
 
 
 
