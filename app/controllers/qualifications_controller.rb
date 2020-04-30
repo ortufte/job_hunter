@@ -1,8 +1,4 @@
 class QualificationsController < ApplicationController
-
-    def index
-        @qualifications = Qualification.all 
-    end
     
     def new
         @qualification = Qualification.new

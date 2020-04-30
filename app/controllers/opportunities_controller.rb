@@ -5,7 +5,7 @@ class OpportunitiesController < ApplicationController
     end
 
     def new
-        @opportunity = Opportunity.new #current_user.opportunities.build NO PARAMS
+        @opportunity = Opportunity.new
     end
 
     def create
@@ -13,7 +13,7 @@ class OpportunitiesController < ApplicationController
         if @opportunity.save
             redirect_to "/users/#{current_user.id}/opportunities/#{@opportunity.id}"
         else
-            redirect_to new_user_opportunity_path, :notice => "Oops, something went wrong. Please try again."
+            redirect_to new_user_opportunity_path, :notice => "Whoops! Title and Company are required in order to create a new Opportunity."
         end
     end
 
@@ -28,11 +28,10 @@ class OpportunitiesController < ApplicationController
 
     def update
         @opportunity = Opportunity.find_by(:id => params[:id])
-        #byebug
         if @opportunity.update(opportunity_params)
             redirect_to user_opportunity_path(@opportunity)
         else
-            render :edit, :notice => "Oops, something went wrong. Please try again."
+            redirect_to edit_user_opportunity_path(@opportunity), :notice => "Whoops! Title and Company are required."
         end
     end
 
@@ -45,7 +44,7 @@ class OpportunitiesController < ApplicationController
     private
 
     def opportunity_params
-        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id, :qualification_ids => [ ], :qualifications_attributes => [:description])
+        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id, :qualification_ids => [ ], :qualifications_attributes => [:description], :tasks_attributes => [:id, :description, :priority, :complete])
     end
 
 

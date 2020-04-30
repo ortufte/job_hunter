@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 
-    def new
-    end
-
     def create
         if request.env["omniauth.auth"]
             user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
@@ -14,7 +11,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = user.id
                 redirect_to user_path(user)
             else
-                redirect_to new_session_path, :notice => "User not found, please try again."
+                redirect_to root_path, :notice => "There was a problem with your username or password, please try again."
             end
         end
     end
