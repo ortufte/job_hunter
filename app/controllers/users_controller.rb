@@ -5,12 +5,16 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(user_params)
-        if user.save
-            session[:user_id] = user.id
-            redirect_to user_path(user)
+        if User.find_by(:email => user_params[:email])
+            redirect_to root_path, :notice => "User already exists, please log in."
         else
-            redirect_to new_user_path
+            user = User.new(user_params)
+            if user.save
+                session[:user_id] = user.id
+                redirect_to user_path(user)
+            else
+                redirect_to root_path, :notice => "All fields are required to sign up, please try again."
+            end
         end
     end
 
@@ -24,7 +28,6 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by(:id => params[:id])
-        #byebug
         if @user.update(user_params)
             redirect_to user_user_qualifications_path(current_user)
         else
