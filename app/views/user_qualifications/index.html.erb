@@ -1,21 +1,18 @@
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
-<br>
 <br>
 <br>
 <h3 style="text-indent: 15px"><%= current_user.name %>'s Qualifications </h3>
+<br>
 <div class="list-group">
     <% current_user.user_qualifications.each do |u| %>
         <a href="/users/<%= current_user.id %>/user_qualifications/<%= u.id %>/edit" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= u.qualification.description%>
-            <span class="badge badge-primary badge-pill">Add Notes</span>
-        </div>
-    <% if !u.comment.blank? %>
-        <p class="mb-1">Notes: <%= u.comment %> <%= o.company %></p>
-    <% end %>
-    </a>
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= u.qualification.description%>
+            </div>
+            <% if !u.comment.blank? %>
+            <p class="mb-1">Notes: <%= u.comment %></p>
+            <% end %>
+            <span class="badge badge-primary badge-pill float right">Add/Edit Notes</span>
+        </a>
   <% end %>
 </div>
 <br>

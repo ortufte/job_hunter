@@ -9,7 +9,12 @@
 
         <fieldset class="form-group">
             <div class="form-check">
-                <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) %>
+
+                <%= f.collection_check_boxes(:qualification_ids, Qualification.all, :id, :description) do |q| %><br>
+                    <%= q.check_box %>
+                    <%= q.label %>
+                  <% end %>
+     
             </div>
         </fieldset>
 
@@ -17,7 +22,7 @@
             <legend>Create a New Qualification</legend>
             <div class="form-group">
                 <%= f.fields_for :qualifications, @user.qualifications.build do |qualifications_fields| %>
-                    <%= qualifications_fields.text_field :description %>
+                    <%= qualifications_fields.text_field :description %><small class="text-muted"> * Qualification Description will be public, any notes added will not be. </small>
                 <% end %>
             </div>
         </fieldset>
