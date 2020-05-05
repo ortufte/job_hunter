@@ -17,7 +17,13 @@ class Opportunity < ApplicationRecord
         end
     end
 
-
+    def closed?
+        if !!self.closed
+         "Closed"
+        elsif !self.closed
+         "Current"
+        end
+     end
 
 end
 
