@@ -44,7 +44,7 @@ class OpportunitiesController < ApplicationController
     private
 
     def opportunity_params
-        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id, :qualification_ids => [ ], :qualifications_attributes => [:description], :tasks_attributes => [:id, :description, :priority, :complete])
+        params.require(:opportunity).permit(:title, :company, :location, :contact, :phone, :email, :job_listing, :closed, :user_id, :qualification_ids => [ ], :qualifications_attributes => [:description], :task_ids => [ ], :tasks_attributes => [:id, :description, :priority, :complete])
     end
 
 
