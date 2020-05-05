@@ -8,7 +8,7 @@
       <a href="/users/<%= current_user.id %>/opportunities/<%= o.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1"><%= o.title %></h5>
-          <small class="text-muted">3 days ago</small>
+          <small class="text-muted">Created: <%= o.created_at.strftime('%m/%d/%Y %I:%M %p') %></small>
         </div>
         <p class="mb-1">Company: <%= o.company %></p>
         <small class="text-muted">Click for Details</small>
