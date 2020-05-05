@@ -55,7 +55,7 @@ Specs:
     signup and login validation error messages display on index page (where login and signup forms are located)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY - Planning to cleanup while waiting for review
+- [x] Limited logic in controllers  - Planning to cleanup while waiting for review
+- [x] Views use helper methods if appropriate - Planning to cleanup while waiting for review
+- [x] Views use partials if appropriate - Planning to cleanup while waiting for review
