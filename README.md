@@ -1,24 +1,26 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Job Hunter - Rails Portfolio Project for Flatiron by Olivia Tufte
 
-Things you may want to cover:
+About 
+Job Hunter provides the job seeker with an organizational tool to track job opportunities and the tasks associated with them from multiple platforms all in one place. A user will see the top five most urgent tasks on their dashboard in order to provide a focused to do list immediatly upon logging in. Urgency is based on task priority (set by user) and task creation date. Oldest tasks with the highest priority will be at the top of the list. 
 
-* Ruby version
+Video walkthrough here: https://youtu.be/JxAdVX4cDMM
 
-* System dependencies
+Built With 
+ruby 2.6.1p33
+Rails 6.0.2.2
+Bootstrap/Bootswatch (Lux Template)
 
-* Configuration
+Usage
+Clone this repo onto your device.
+Run 'bundle install' to install all necessary Ruby gems.
+Run 'rake db:migrate' to migrate the database.
+Run 'rake db:seed' to populate the database. (optional)
+Run 'rails s' to start the local server.
+Open your browser to 'localhost:3000' to run the app.
 
-* Database creation
+Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/ortufte/job_hunter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License
+The gem is available as open source under the terms of the MIT License.
