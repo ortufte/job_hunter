@@ -37,7 +37,7 @@ end
         phone: Faker::PhoneNumber.phone_number, 
         email: Faker::Internet.email, 
         job_listing: Faker::Internet.url, 
-        closed: Faker::Boolean.boolean(true_ratio: 0.4), 
+        closed: Faker::Boolean.boolean(true_ratio: 0.5), 
         user_id: User.first.id,
         created_at: Faker::Time.backward(days: 30),
         qualification_ids: [Faker::Number.between(from: 1, to: 18),
