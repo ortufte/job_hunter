@@ -5,9 +5,11 @@
   <h6 class="text-muted">Company:<%= @opportunity.company %></h6>
 </header>
 <br>
+
 <div class="card bg-secondary mb-3">
   <div class="card-body">
     <h4 class="card-title"> Details </h4>
+
     <table class="table">
       <thead>
         <tr>
@@ -47,12 +49,14 @@
         </tr>
       </tbody>
     </table>
+
   </div>
 </div>
 
 <div class="card bg-secondary mb-3">
   <div class="card-body">
     <h4 class="card-title"> Tasks </h4>
+
     <table class="table">
       <thead>
         <tr>
@@ -73,14 +77,15 @@
         <% end %>
       </tbody>
     </table> 
+
   </div>
 </div>
 <br>
-<br>
+
 <div>
 <h4 style="text-indent: 15px"><%= link_to("Edit", "/users/#{current_user.id}/opportunities/#{@opportunity.id}/edit") %><br></h4>
-
 </div>
+
 <br>
 <br>
 

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :user_qualifications, only: [:index, :edit, :update]
   end
 
-  resources :qualifications, only: [:new, :create]
   resources :sessions, only: [:create, :destroy]
   resources :tasks, only: [:destroy]
 

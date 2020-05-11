@@ -1,5 +1,4 @@
-  
-<div class="card bg-secondary mb-3">
+  <div class="card bg-secondary mb-3">
     <div class="card-body">
         <%= form_for @user_qualification, url: user_user_qualification_path, html: { :method => :patch } do |f| %> 
             <legend> Qualification: <%= @user_qualification.qualification.description %></legend>

@@ -1,6 +1,6 @@
+<br>
+<br>
 
-<br>
-<br>
 <% if flash[:notice] %>
 <div class="alert alert-dismissible alert-danger">
   <strong><%= flash[:notice] %></strong>
@@ -9,48 +9,49 @@
 
 <body class="index_page">
 
-<div class="card border-light mb-3" style="max-width: 20rem;">
-    <div class="card-body" >
-    <h4 class="card-title">Login</h4>
+    <div class="card border-light mb-3" style="max-width: 20rem;">
+        <div class="card-body" >
+            <h4 class="card-title">Login</h4>
 
-    <%= form_tag ("/sessions") do %>
-        <%= label_tag "Email:" %><br>
-        <%= text_field_tag "email" %><br>
+            <%= form_tag ("/sessions") do %>
+                <%= label_tag "Email:" %><br>
+                <%= text_field_tag "email" %><br>
 
-        <%= label_tag "Password:" %><br>
-        <%= password_field_tag "password" %><br>
-        <br>
-        <%= submit_tag "Login" %>
-    <% end %>
+                <%= label_tag "Password:" %><br>
+                <%= password_field_tag "password" %><br>
+                <br>
+                <%= submit_tag "Login" %>
+            <% end %>
+            <br>
+            <a href="/auth/google_oauth2">Sign in with Google</a>
+        </div>
+    </div>
+
     <br>
-    <a href="/auth/google_oauth2">Sign in with Google</a>
-  
+    <br>
+
+    <div class="card border-light mb-3" style="max-width: 20rem;">
+        <div class="card-body" >
+            <h4 class="card-title">Sign Up</h4>
+
+            <%= form_for @user do |f| %>
+                <%= f.label :name, 'Name:' %><br>
+                <%= f.text_field :name %><br>
+
+                <%= f.label :email,'Email:' %><br>
+                <%= f.text_field :email %><br>
+
+                <%= f.label :password, 'Password:' %><br>
+                <%= f.password_field :password %><br>
+
+                <%= f.label :password_confirmation, 'Confirm Password:' %><br>
+                <%= f.password_field :password_confirmation %><br>
+                <br>
+                <%= f.submit "Sign Up" %>
+            <% end %>
+        </div>
     </div>
-</div>
-<br>
-<br>
-<div class="card border-light mb-3" style="max-width: 20rem;">
-    <div class="card-body" >
-    <h4 class="card-title">Sign Up</h4>
-
-    <%= form_for @user do |f| %>
-        <%= f.label :name, 'Name:' %><br>
-        <%= f.text_field :name %><br>
-
-        <%= f.label :email,'Email:' %><br>
-        <%= f.text_field :email %><br>
-
-        <%= f.label :password, 'Password:' %><br>
-        <%= f.password_field :password %><br>
-
-        <%= f.label :password_confirmation, 'Confirm Password:' %><br>
-        <%= f.password_field :password_confirmation %><br>
-        <br>
-        <%= f.submit "Sign Up" %>
-    <% end %>
-
-    </div>
-</div>
+    
 </body>
 
   

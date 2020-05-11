@@ -1,12 +1,9 @@
-
-
 <div class="jumbotron">
   <h3 class="display-4" style="text-align:center">Welcome to your dashboard, <br> <%= current_user.name %>!</h3><br>
 </div>
 
 
 <h3 style="text-indent: 15px">Current Opportunities</h3>
-
 <div class="list-group">
   <% current_user.opportunities.each do |o| %>
     <% if !o.closed %>
@@ -21,11 +18,12 @@
     <% end %>
   <% end %>
 </div>
+
 <br>
 <p style="text-indent: 15px"><%= link_to "Add a Job Opportunity", "/users/#{current_user.id}/opportunities/new" %><p>
 <br>
-<h3 style="text-indent: 15px">Urgent Tasks</h3>
 
+<h3 style="text-indent: 15px">Urgent Tasks</h3>
 <div class="list-group">
   <% current_user.tasks.urgent(5).each do |t| %>
       <a href="/users/<%=current_user.id %>/opportunities/<%=t.opportunity.id %>"  class="list-group-item list-group-item-action flex-column align-items-start">
@@ -37,6 +35,5 @@
         <small class="text-muted">Click for Details</small>
       </a>
     <% end %>
-
 </div>
 

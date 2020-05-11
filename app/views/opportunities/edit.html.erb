@@ -14,9 +14,11 @@
 <br>
 
 <%= form_for @opportunity, url: user_opportunity_path do |f| %>
+  
   <div class="card bg-secondary mb-3">
     <div class="card-body">
       <h4 class="card-title"> Edit Details </h4>
+
       <table class="table">
         <thead>
           <tr>
@@ -86,11 +88,14 @@
       <div class="form-group">
           <%= f.fields_for :qualifications, @opportunity.qualifications.build do |q| %>
             <%= q.label :description, "Create a New Qualification: " %>
-            <%= q.text_field :description %><small class="text-muted"> * Qualification Description will be public, any notes added will not be. </small>
+            <%= q.text_field :description %><br>
+            <small class="text-muted"> * Qualification Description will be public, any notes added will not be. </small>
           <% end %>
       </div>
+
     </div>
   </div>
+
   <div class="card bg-secondary mb-3">
     <div class="card-body">
       <h4 class="card-title"> Tasks </h4>
@@ -135,15 +140,17 @@
           <%= t.text_field :priority %><br>
         <% end %>
       </div>
+
     </div>
   </div>
   <%= f.submit "Save Changes" %>
 <% end %>
 <br>
+
 <%= form_for @opportunity, url: user_opportunity_path, html: { :method => :delete } do |f| %> 
   <%= f.submit "Delete Opportunity" %>
 <% end %>
-</div>
+
 <br>
 <br>
 
