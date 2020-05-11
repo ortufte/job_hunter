@@ -7,20 +7,31 @@ Job Hunter provides the job seeker with an organizational tool to track job oppo
 Video walkthrough here: https://youtu.be/JxAdVX4cDMM
 
 Built With 
+
 ruby 2.6.1p33
+
 Rails 6.0.2.2
+
 Bootstrap/Bootswatch (Lux Template)
 
 Usage
+
 Clone this repo onto your device.
+
 Run 'bundle install' to install all necessary Ruby gems.
+
 Run 'rake db:migrate' to migrate the database.
+
 Run 'rake db:seed' to populate the database. (optional)
+
 Run 'rails s' to start the local server.
+
 Open your browser to 'localhost:3000' to run the app.
 
 Contributing
+
 Bug reports and pull requests are welcome on GitHub at https://github.com/ortufte/job_hunter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 License
+
 The gem is available as open source under the terms of the MIT License.
