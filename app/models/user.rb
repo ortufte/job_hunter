@@ -10,14 +10,7 @@ class User < ApplicationRecord
     validates :password, confirmation: true
     validates :password_confirmation, presence: true, :on => :create
 
-    def qualifications_attributes=(qualification_attributes)
-        qualification_attributes.values.each do |qualification_attribute|
-            new_qual = Qualification.find_or_create_by(qualification_attribute) if !qualification_attribute[:description].empty?
-            if new_qual
-                self.qualifications << new_qual
-            end
-        end
-    end
+    accepts_nested_attributes_for :qualifications, :reject_if => proc { |attributes| attributes['description'].blank? }
 
     def self.find_or_create_from_auth_hash(auth)
 		where(email: auth.extra.id_info.email).first_or_initialize.tap do |user|
@@ -29,10 +22,5 @@ class User < ApplicationRecord
 		end
     end
     
-   
-
-
-
-
 end
 

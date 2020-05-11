@@ -21,7 +21,6 @@ class OpportunitiesController < ApplicationController
         @opportunity = Opportunity.find_by(:id => params[:id])
     end
 
-
     def edit
         @opportunity = Opportunity.find_by(:id => params[:id])
     end

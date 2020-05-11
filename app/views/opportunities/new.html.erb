@@ -52,7 +52,8 @@
         <legend>Create a New Qualification</legend>
         <div class="form-group">
           <%= f.fields_for :qualifications, @opportunity.qualifications.build do |qualifications_fields| %>
-            <%= qualifications_fields.text_field :description %> <small class="text-muted"> * Qualification Description will be public, any notes added will not be. </small>
+            <%= qualifications_fields.text_field :description %> 
+            <small class="text-muted"> * Qualification Description will be public, any notes added will not be. </small>
           <% end %>
         </div>
       </fieldset>
